@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import os
 import math
-import data_loader_1d
+import data_loader_legacy
 import resnet18_1d as models
 import torch.nn as nn
 import  time
@@ -112,7 +112,7 @@ def test_source(model,test_loader):
             correct += pred.eq(tgt_test_label.data.view_as(pred)).cpu().sum()
 
 
-    print('\n set: Average loss: {:.4f}, Accuracy: {}/{} ({:.2f}%)\n'.format(test_loss, correct, len(test_loader.dataset),10000. * correct / len(test_loader.dataset)))
+    print('\n set: Average loss: {:.4f}, Accuracy: {}/{} ({:.2f}%)\n'.format(test_loss, correct, len(test_loader.dataset), 10000. * correct / len(test_loader.dataset)))
     return correct,test_loss
 
 
@@ -273,9 +273,9 @@ if __name__ == '__main__':
 
             kwargs = {'num_workers': 0, 'pin_memory': True} if cuda else {}
 
-            src_loader = data_loader_1d.load_training (dataset1,dataset2,dataset3,batch_size, kwargs)
+            src_loader = data_loader_legacy.load_training (dataset1,dataset2,dataset3,batch_size, kwargs)
 
-            tgt_test_loader = data_loader_1d.load_testing(dataset4,batch_size, kwargs)
+            tgt_test_loader = data_loader_legacy.load_testing(dataset4,batch_size, kwargs)
 
             src_dataset_len = len(src_loader.dataset)
 

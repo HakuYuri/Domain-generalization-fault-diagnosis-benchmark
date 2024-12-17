@@ -52,16 +52,16 @@ def min_max(Z):
 
 
 
-def data_load(root_path,datasetname,domain_label):
+def data_load(root_path, datasetname, domain_label):
 
 
-    fft1=False
+    fft1 = False
     class_num=3
 
 
     data = scio.loadmat(root_path)
 
-    if (datasetname=='M_CWRU'):
+    if (datasetname == 'M_CWRU'):
 
         dir1 = 'load0_train'
         dir2 = 'load1_train'
@@ -186,8 +186,6 @@ def data_load(root_path,datasetname,domain_label):
             train_label_5[i][1] = domain_label
 
 
-
-
         train_fea = np.vstack((train_fea_1, train_fea_2, train_fea_3, train_fea_4, train_fea_5))
         train_label = torch.cat([train_label_1, train_label_2, train_label_3, train_label_4, train_label_5], dim=0)
 
@@ -257,16 +255,16 @@ def data_load(root_path,datasetname,domain_label):
 
 
         train_fea = train_fea_1
-        train_label =train_label_1
+        train_label = train_label_1
 
 
 
 
-    return train_fea,train_label
+    return train_fea, train_label
 
 
 
-def load_training(dataset1,dataset2,dataset3,batch_size, kwargs):
+def load_training(dataset1, dataset2, dataset3, batch_size, kwargs):
 
 
 
@@ -301,7 +299,7 @@ def load_training(dataset1,dataset2,dataset3,batch_size, kwargs):
 
 
 
-def load_testing( dataset,batch_size, kwargs):
+def load_testing(dataset, batch_size, kwargs):
 
 
     class_num = 3
